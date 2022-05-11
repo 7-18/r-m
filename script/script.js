@@ -1,4 +1,4 @@
-const URL_API = "https://rickandmortyapi.com/api/character";
+const URL_API = "https://rickandmortyapi.com/api/character"
 
 const getData = async () => {
   const response = await fetch(URL_API);
