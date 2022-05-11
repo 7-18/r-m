@@ -9,7 +9,7 @@ const getData = async () => {
 const getEpisode = async (episode) => {
   const response = await fetch(episode);
   const data = await response.json();
-  return data;
+  return data.name;
 };
 
 const printData = async () => {
@@ -19,15 +19,7 @@ const printData = async () => {
   div.classList.add("container");
   data.forEach((character) => {
     const { name, image, species, status, location, episode } = character;
-    const episodeName = new Promise((resolve, reject) => {
-      getEpisode(episode[0])
-        .then((data) => {
-          resolve(data.name);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
+    const episodeName = getEpisode(episode[0]);
     episodeName.then((data) => {
       div.innerHTML += `<div class="character">
       <img
